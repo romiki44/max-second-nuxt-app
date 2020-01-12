@@ -3,31 +3,15 @@
     <section class="intro">
       <h1>Get the latest tech news!</h1>
     </section>
-    <section class="featured-posts">
-      <post-preview 
-        id='1'
-        thumbnail="https://priorityconsultants.com/wp-content/uploads/2019/07/priorityconsultants.com%20-%202019-07-12_04-23-42_578902.jpg"
-        title="Post Title 1"
-        previewText="Preview Text 1"/>
-      <post-preview 
-        id='2'
-        thumbnail="https://4533x635aus61yamnx2wkfwe-wpengine.netdna-ssl.com/wp-content/uploads/2019/12/shutterstock_578441974-898x505.jpg"
-        title="Post Title 2"
-        previewText="Preview Text 2"/>
-      <post-preview 
-        id='3'
-        thumbnail="https://miro.medium.com/max/2625/1*BqPFaq9z3IpcN6m8qrJE3Q.jpeg"
-        title="Post Title 3"
-        previewText="Preview Text 3"/>
-    </section>
+    <PostList />
   </div>
 </template>
 
 <script>
-import PostPreview from './../components/Posts/PostPreview'
+import PostList from '@/components/Posts/PostList'
 export default {
   components: {
-    PostPreview
+    PostList
   }
 }
 </script>
@@ -62,15 +46,6 @@ export default {
   .intro h1 {
     font-size: 2rem;
   }
-}
-
-.featured-posts {
-  display: flex;
-  padding: 20px;
-  box-sizing: border-box;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
 }
 
 </style>
