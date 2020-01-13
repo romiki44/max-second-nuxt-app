@@ -3,7 +3,7 @@
     <section class="intro">
       <h1>Get the latest tech news!</h1>
     </section>
-    <PostList />
+    <PostList :posts="loadedPosts"/>
   </div>
 </template>
 
@@ -12,7 +12,63 @@ import PostList from '@/components/Posts/PostList'
 export default {
   components: {
     PostList
+  },
+  // bezi na serveri - callback deprecated!!
+  // asyncData(context, callback) {
+  //   console.log('async on root (/)');
+  //   setTimeout(()=>{
+  //     callback(null, {
+  //       loadedPosts: [
+  //         {id: '1', title: 'Post 1', previewText: 'Content of post 1', thumbnail: 'https://www.simplilearn.com/ice9/free_resources_article_thumb/everything-you-need-to-know-about-iot-applications.jpg'},
+  //         {id: '2', title: 'Post 2', previewText: 'Content of post 2', thumbnail: 'https://www.simplilearn.com/ice9/free_resources_article_thumb/everything-you-need-to-know-about-iot-applications.jpg'},
+  //         {id: '3', title: 'Post 3', previewText: 'Content of post 3', thumbnail: 'https://www.simplilearn.com/ice9/free_resources_article_thumb/everything-you-need-to-know-about-iot-applications.jpg'}
+  //       ]
+  //     });
+  //   },1500);
+  // }
+
+  // bezi na serveri - Promise
+  // asyncData(context) {
+  //   console.log('asyncData on root (/)');
+  //   return new Promise((resolve, reject)=>{
+  //     setTimeout(()=>{
+  //       resolve({
+  //         loadedPosts: [
+  //           {id: '1', title: 'Post 1', previewText: 'Content of post 1', thumbnail: 'https://www.simplilearn.com/ice9/free_resources_article_thumb/everything-you-need-to-know-about-iot-applications.jpg'},
+  //           {id: '2', title: 'Post 2', previewText: 'Content of post 2', thumbnail: 'https://www.simplilearn.com/ice9/free_resources_article_thumb/everything-you-need-to-know-about-iot-applications.jpg'},
+  //           {id: '3', title: 'Post 3', previewText: 'Content of post 3', thumbnail: 'https://www.simplilearn.com/ice9/free_resources_article_thumb/everything-you-need-to-know-about-iot-applications.jpg'}
+  //         ]
+  //       });
+  //     },1000);
+  //   })
+  //   .then(data=>{
+  //     return data;
+  //   })
+  //   .catch(e=>{
+  //     context.error(new Error());
+  //   })
+  computed: {
+    loadedPosts() {
+      console.log('from store.../root', this.$store.getters.loadedPosts);
+      return this.$store.getters.loadedPosts;
+    }
   }
+
+  //bezi na clientovi!!
+  // data() {
+  //   return {
+  //     loadedPosts: []
+  //   }
+  // },
+  // created() {
+  //   setTimeout(()=>{
+  //     this.loadedPosts= [
+  //       {id: '1', title: 'Post 1', previewText: 'Content of post 1', thumbnail: 'https://www.simplilearn.com/ice9/free_resources_article_thumb/everything-you-need-to-know-about-iot-applications.jpg'},
+  //       {id: '2', title: 'Post 2', previewText: 'Content of post 2', thumbnail: 'https://www.simplilearn.com/ice9/free_resources_article_thumb/everything-you-need-to-know-about-iot-applications.jpg'},
+  //       {id: '3', title: 'Post 3', previewText: 'Content of post 3', thumbnail: 'https://www.simplilearn.com/ice9/free_resources_article_thumb/everything-you-need-to-know-about-iot-applications.jpg'}
+  //     ]
+  //   },1500);
+  // }
 }
 </script>
 
