@@ -15,45 +15,21 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
-  // asyncData(context, callback) {
-  //   setTimeout(()=>{
-  //     callback(null, {
-  //       loadedPost: {
-  //         id: '1', 
-  //         title: 'Post 1 (ID: '+context.route.params.id+')', 
-  //         previewText: 'Content of post 1', 
-  //         author: 'Max',
-  //         updatedDate: new Date(),
-  //         content: 'Some content 1',
-  //         thumbnail: 'https://www.simplilearn.com/ice9/free_resources_article_thumb/everything-you-need-to-know-about-iot-applications.jpg'
-  //       }
-  //     })
-  //   }, 1000);
-  // }
   asyncData(context) {
-    console.log('asyncData on post (/posts/:id)');
-    return new Promise((resolve, reject)=>{
-      setTimeout(()=>{
-        resolve({
-          loadedPost: {
-            id: '1', 
-            title: 'Post 1', 
-            previewText: 'Content of post 1', 
-            author: 'Max',
-            updatedDate: new Date(),
-            content: 'Some content 1',
-            thumbnail: 'https://www.simplilearn.com/ice9/free_resources_article_thumb/everything-you-need-to-know-about-iot-applications.jpg'
-            }
-        });
-      },1000);
-    })
-    .then(data=>{
-      return data;
-    })
-    .catch(e=>{
-      context.error(new Error());
-    })
+    const url='https://ng-http-01-start.firebaseio.com/nuxt2/posts/'+context.params.id+'.json';
+    console.log('asyncData on post (/posts/:id) with url', url);
+    return axios.get(url)
+      .then(res=>{
+        return {
+          loadedPost: res.data
+        }
+      })
+      .catch(e=>{
+        console.log('error',e);
+        context.error(e);
+      });
   }
 }
 </script>
