@@ -19,11 +19,12 @@ export default {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#fa923f', height: '4px', duration: 5000 },
   /*
   ** Global CSS
   */
   css: [
+    '~assets/styles/main.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -48,6 +49,13 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
-    }
+    },
+  },
+  env: {
+    baseUrl: process.env.BASE_URL || 'https://ng-http-01-start.firebaseio.com/nuxt2'
+  },
+  transition: { //nefunguje!
+    name: 'fade',
+    mode: 'out-in'
   }
 }
