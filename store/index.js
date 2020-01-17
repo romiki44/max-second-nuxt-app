@@ -95,6 +95,11 @@ const createStore=()=> {
             localStorage.setItem('tokenExpiration', new Date().getTime()+ +result.data.expiresIn*1000)
             Cookie.set('jwt', result.data.idToken);
             Cookie.set('expirationDate', new Date().getTime() + +result.data.expiresIn*1000);
+
+            //express midlleware
+            return axios.post('http://localhost:3000/api/track-data', {
+              data: 'Authenticated!'
+            });
           }).catch(e=>{
             console.log(e);
           }
