@@ -13,6 +13,7 @@ export default {
   // created() {
   //   this.$store.dispatch('setPosts', this.loadedPosts);
   // }
+  middleware: 'log',
   computed: {
     loadedPosts() {
       console.log('from store.../posts', this.$store.getters.loadedPosts);

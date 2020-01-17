@@ -52,10 +52,14 @@ export default {
     },
   },
   env: {
-    baseUrl: process.env.BASE_URL || 'https://ng-http-01-start.firebaseio.com/nuxt2'
+    baseUrl: process.env.BASE_URL || 'https://ng-http-01-start.firebaseio.com/nuxt2',
+    fbAPIKey: 'AIzaSyAell8-metDUlaOisQQlFTY73EUGIcwHYc'
   },
   transition: { //nefunguje!
     name: 'fade',
     mode: 'out-in'
-  }
+  },
+  // router: {
+  //   middleware: 'log'
+  // }
 }
